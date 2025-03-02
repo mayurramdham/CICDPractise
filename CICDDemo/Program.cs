@@ -20,7 +20,11 @@ namespace CICDDemo
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CICDDemo API V1");
+                    c.RoutePrefix = string.Empty; // Serve Swagger UI at root URL
+                });
             }
 
             app.UseHttpsRedirection();
